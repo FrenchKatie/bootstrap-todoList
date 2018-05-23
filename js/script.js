@@ -17,17 +17,16 @@
           				newItem +=      uniqueId;
           				newItem += "'   >";
           				newItem += 			elementText;
-          				newItem += "    </label></div>";
+          				newItem += "    </label><button type='button' name='button' class='removeButton'>Remove</button></div>";
 
               listItemWrapper.insertAdjacentHTML("afterend", newItem);
 
         }  // ** makeNewElement function ENDS **
 
-        $('#removeButton').click(function(){
-          var getItem = document.getElementById('itemWrapper');
-          getItem.parentNode.removeChild(getItem);
-          return false;
-    		});
+
+        $(".removeButton").click(function(event) {
+              event.target.parentNode.remove();
+        });
 
 
 }());  // ** iife ENDS
