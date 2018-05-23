@@ -3,7 +3,7 @@
     		var input = document.getElementById('userInput');
         var counter = 0;
 
-    		$('button').click(function(){
+    		$('#addItemButton').click(function(){
               addListItem(input.value);
     		});
 
@@ -23,6 +23,11 @@
 
         }  // ** makeNewElement function ENDS **
 
+        $('#removeButton').click(function(){
+          var getItem = document.getElementById('itemWrapper');
+          getItem.parentNode.removeChild(getItem);
+          return false;
+    		});
 
 
 }());  // ** iife ENDS
