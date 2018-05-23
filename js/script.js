@@ -1,14 +1,13 @@
 (function() {
 
     		var input = document.getElementById('userInput');
-        var closeBtns = document.getElementsByClassName('removeButton');
+        var closeBtns = document.getElementsByClassName('removeButton'); //Listens for the buttons, will create array
         var counter = 0;
 
 
     		$('#addItemButton').click(function(){
               addListItem(input.value);
-              closeBtns[0].onclick = removeListItem;
-              console.log(closeBtns);
+              removeItemListener(); //Refreshes and rechecks for ".removeButton" elements
     		});
 
 
@@ -25,10 +24,6 @@
         //
 
 
-
-
-
-
         function addListItem(elementText) {
 
               var uniqueId = 'customControlValidation' + counter++;
@@ -39,32 +34,33 @@
           				newItem +=      uniqueId;
           				newItem += "'   >";
           				newItem += 			elementText;
-          				newItem += "    </label><button type='button' name='button' class='removeButton'>Remove</button></div>";
+          				newItem += "    </label><button type='button' name='button' class='removeButton'>Delete</button></div>";
 
               listItemWrapper.insertAdjacentHTML("afterend", newItem);
 
+              // $(".removeButton").click(function(event) {
+              //   console.log('click function');
+              //   removeListItem();
+              // });
 
-
-                // $(".removeButton").click(function(event) {
-                //   console.log('click function');
-                //   removeListItem();
-                // });
-
-
-        }  // ** makeNewElement function ENDS **
+        }  // ** addListItem function ENDS **
 
 
 
-
-
-        function removeListItem(event){
-          console.log('working')
-              console.log(event.target.parentNode);
-
+        function removeListItem(event){ //This function gets fired in the removeItemListener function.
               event.target.parentNode.remove();
-              console.log(event.target.parentNode);
-        }
+        } // ** removeListItem function ENDS **
 
+
+
+        function removeItemListener() {
+              closeBtns[0].onclick = removeListItem; //calls removeListItem function
+        }  // ** removeButtonListener function ends **
+
+
+        function editListItem () {
+          // node.nodeValue="new value"; //****google this!!!
+        }
 
 
 }());  // ** iife ENDS
