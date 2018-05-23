@@ -1,11 +1,33 @@
 (function() {
 
     		var input = document.getElementById('userInput');
+        var closeBtns = document.getElementsByClassName('removeButton');
         var counter = 0;
+
 
     		$('#addItemButton').click(function(){
               addListItem(input.value);
+              closeBtns[0].onclick = removeListItem;
+              console.log(closeBtns);
     		});
+
+
+        // $('body').on('click', '.removeButton', function() {
+        //   console.log('another');
+        //   removeListItem();
+        // });
+
+        // closeBtns[0].onclick = removeListItem;
+        // $(".removeButton").click(function(event) {
+        //   console.log('click function');
+        //   removeListItem();
+        // });
+        //
+
+
+
+
+
 
         function addListItem(elementText) {
 
@@ -21,12 +43,28 @@
 
               listItemWrapper.insertAdjacentHTML("afterend", newItem);
 
+
+
+                // $(".removeButton").click(function(event) {
+                //   console.log('click function');
+                //   removeListItem();
+                // });
+
+
         }  // ** makeNewElement function ENDS **
 
 
-        $(".removeButton").click(function(event) {
+
+
+
+        function removeListItem(event){
+          console.log('working')
+              console.log(event.target.parentNode);
+
               event.target.parentNode.remove();
-        });
+              console.log(event.target.parentNode);
+        }
+
 
 
 }());  // ** iife ENDS
