@@ -5,6 +5,15 @@
         var closeBtns = document.getElementsByClassName('removeButton'); //Listens for the buttons, will create array
         var counter = 0;
 
+
+        // Click function using jquery
+        //----------------------------
+    		// $('#addItemButton').click(function(){
+        //       addListItem(input.value);
+        //       removeItemListener(); //Refreshes and rechecks for ".removeButton" elements
+    		// });
+
+
         // Click function using vanilla JS
         //--------------------------------
         var addListItemButton = document.getElementById('addItemButton');
@@ -14,6 +23,24 @@
               addListItem(input.value);
               removeItemListener(); //Refreshes and rechecks for ".removeButton" elements
         });
+
+
+
+        // Two other options to get my dynamic functions working
+        //------------------------------------------------------
+        // $('body').on('click', '.removeButton', function() {
+        //   console.log('another');
+        //   removeListItem();
+        // });
+
+        // closeBtns[0].onclick = removeListItem;
+        // $(".removeButton").click(function(event) {
+        //   console.log('click function');
+        //   removeListItem();
+        // });
+        //
+
+
 
         // Adding HTML to the dom containing the users input
         //--------------------------------------------------
@@ -31,7 +58,15 @@
 
               listItemWrapper.insertAdjacentHTML("afterend", newItem);
 
+              // Last option to get my dynamic functions working
+              //------------------------------------------------
+              // $(".removeButton").click(function(event) {
+              //   console.log('click function');
+              //   removeListItem();
+              // });
+
         }  // ** addListItem function ENDS **
+
 
 
         // Using Jquery to remove the selected list item
@@ -41,12 +76,20 @@
         } // ** removeListItem function ENDS **
 
 
+
         // JS function used to listen for the variable closeBtns every time a new item
         // is added, if found a closeBtns then execute the removeListItem function
         //----------------------------------------------------------------------------
         function removeItemListener() {
               closeBtns[0].onclick = removeListItem; //calls removeListItem function
         }  // ** removeButtonListener function ends **
+
+
+
+        function editListItem () {
+          // node.nodeValue="new value"; //****google this!!!
+
+        }
 
 
 }());  // ** iife ENDS
