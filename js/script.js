@@ -13,6 +13,7 @@
         addListItemButton.addEventListener('click', function () {
               addListItem(input.value);
               removeItemListener(); //Refreshes and rechecks for ".removeButton" elements
+              refreshInput();
         });
 
         // Adding HTML to the dom containing the users input
@@ -27,7 +28,7 @@
           				newItem +=      uniqueId;
           				newItem += "'   >";
           				newItem += 			elementText;
-          				newItem += "    </label><button type='button' name='button' class='removeButton'>Delete</button></div>";
+          				newItem += "    </label><button type='button' name='button' class='removeButton'>Delete <i class='far fa-trash-alt'></i></button></div>";
 
               listItemWrapper.insertAdjacentHTML("afterend", newItem);
 
@@ -48,5 +49,11 @@
               closeBtns[0].onclick = removeListItem; //calls removeListItem function
         }  // ** removeButtonListener function ends **
 
+
+        // After submit the value is removed from the input field and is blank
+        //--------------------------------------------------------------------
+        function refreshInput () {
+              input.value = ""; //called in the onclick function
+        }
 
 }());  // ** iife ENDS
